@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: netflixfrontend-service
+spec:
+  selector:
+    app: netflixfrontend
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
