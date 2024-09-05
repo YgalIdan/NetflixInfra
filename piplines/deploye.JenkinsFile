@@ -11,8 +11,8 @@ pipeline {
             steps {
                 sh '''
                     git checkout -b main || git checkout main
-                    cd $SERVICE_NAME/   
-                    sed -i "s|^image:.*|image: $IMAGE_FULL_NAME_PARAM|" "$(echo $SERVICE_NAME)_deployment.yml"
+                    cd $SERVICE_NAME
+                    sed -i "s|image:.*|image: $IMAGE_FULL_NAME_PARAM|" $(echo $SERVICE_NAME)_deployment.yml
                 '''
             }
         }
