@@ -10,7 +10,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    git checkout -b main || git checkout main
+                    git checkout -b dev || git checkout dev
                     cd dev/$SERVICE_NAME
                     sed -i "s|image:.*|image: $IMAGE_FULL_NAME_PARAM|" $(echo $SERVICE_NAME)_deployment.yml
                 '''
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'GitHub', usernameVariable: 'USERNAME', passwordVariable: 'GIT_TOKEN')]) {
                     sh '''
-                        git add $(echo $SERVICE_NAME)/$(echo $SERVICE_NAME)_deployment.yml
+                        git add dev/$(echo $SERVICE_NAME)/$(echo $SERVICE_NAME)_deployment.yml
                         git commit -m "Update image: $IMAGE_FULL_NAME_PARAM"
                         git push https://$GIT_TOKEN@github.com/YgalIdan/NetflixInfra.git dev
                     '''
