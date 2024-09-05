@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: netflixfrontend
-        image: $IMAGE_FULL_NAME_PARAM
+        image: $(echo $IMAGE_FULL_NAME_PARAM)
         env:
           - name: MOVIE_CATALOG_SERVICE
             value: http://netflixmoviecatalog-service:8080
