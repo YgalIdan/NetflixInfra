@@ -21,7 +21,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'GitHub', usernameVariable: 'USERNAME', passwordVariable: 'GIT_TOKEN')]) {
                     sh '''
-                        git add NetflixFrontend/$(echo $SERVICE_NAME)_deployment.yml
+                        git add $(echo $SERVICE_NAME)/$(echo $SERVICE_NAME)_deployment.yml
                         git commit -m "Update image: $IMAGE_FULL_NAME_PARAM"
                         git push https://$GIT_TOKEN@github.com/YgalIdan/NetflixInfra.git main
                     '''
