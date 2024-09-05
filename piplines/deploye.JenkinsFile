@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh '''
                     cd $SERVICE_NAME/
-                    sed -i 's/image:.*/image: $IMAGE_FULL_NAME_PARAM/' $SERVICE_NAME_deployment.yaml
+                    sed -i 's/image:.*/image: $IMAGE_FULL_NAME_PARAM/' $(echo $SERVICE_NAME)_deployment.yaml
                 '''
             }
         }
