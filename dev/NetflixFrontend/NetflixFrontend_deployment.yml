@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netflixfrontend-dev-deployment
+  labels:
+    app: netflixfrontend-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: netflixfrontend-dev
+  template:
+    metadata:
+        labels:
+          app: netflixfrontend-dev
+    spec:
+      containers:
+      - name: netflixfrontend-dev
+        image: ygalidan/netflixfrontend-dev:v1.0.29
+        env:
+          - name: MOVIE_CATALOG_SERVICE
+            value: http://netflixmoviecatalog-dev-service:8080

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netflixmoviecatalog-dev-deployment
+  labels:
+    app: netflixmoviecatalog-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: netflixmoviecatalog-dev
+  template:
+    metadata:
+        labels:
+          app: netflixmoviecatalog-dev
+    spec:
+      containers:
+      - name: netflixmoviecatalog-dev
+        image: ygalidan/netflixmoviecatalog-dev:latest

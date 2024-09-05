@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
       - name: netflixmoviecatalog
-        image: ygalidan/netflixmoviecatalog:v1.0.5
+        image: ygalidan/netflixmoviecatalog:latest
