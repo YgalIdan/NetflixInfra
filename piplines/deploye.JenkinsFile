@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    
+    parameters { 
+        string(name: 'SERVICE_NAME', defaultValue: '', description: '')
+        string(name: 'IMAGE_FULL_NAME_PARAM', defaultValue: '', description: '')
+    }
+
+    stages {
+        stage('Deploy') {
+            steps {
+                sh '''
+                    cd $SERVICE_NAME/
+                    sed -i 's/image:.*/image: $IMAGE_FULL_NAME_PARAM/' $SERVICE_NAME_deployment.yaml
+                '''
+            }
+        }
+        stage('Git commit and push') {
+                sh '''
+                    git add $SERVICE_NAME_deployment.yaml;
+                    git commit -m "Update image: $IMAGE_FULL_NAME_PARAM";
+                    git push origin main
+                '''
+        }
+    }
+    post {
+        cleanup {
+            cleanWs()
+        }
+    }
+}
