@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: netflixfrontend
-        image: ygalidan/netflixfrontend:v1.0.36
+        image: ygalidan/netflixfrontend:v1.0.37
         env:
           - name: MOVIE_CATALOG_SERVICE
             value: http://netflixmoviecatalog-service:8080
