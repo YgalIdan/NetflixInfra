@@ -15,7 +15,7 @@ pipeline {
                     sh '''
                         cd TF
                         terraform init
-                        terraform apply -var-file TF/region.us-east-1.tfvars -auto-approve
+                        terraform apply -var-file region.us-east-1.tfvars -auto-approve
                     '''
                 }
             }
