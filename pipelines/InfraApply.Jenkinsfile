@@ -8,6 +8,7 @@ pipeline {
         choice(name: "Region", choices: ['eu-north-1', 'us-east-1'], description: '')
     }
 
+
     stages {
         stage('Run terraform') {
             steps {
@@ -15,7 +16,7 @@ pipeline {
                     sh '''
                         cd TF
                         terraform init
-                        terraform apply -var-file region.us-east-1.tfvars -auto-approve
+                        terraform apply -var-file region.${parms.Region}.tfvars -auto-approve
                     '''
                 }
             }
