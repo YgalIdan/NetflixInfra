@@ -15,7 +15,7 @@ pipeline {
                     sh '''
                         cd TF
                         terraform init
-                        terraform destroy -var-file region.us-east-1.tfvars -auto-approve
+                        terraform destroy -var-file region.$(Region).tfvars -auto-approve
                     '''
                 }
             }
