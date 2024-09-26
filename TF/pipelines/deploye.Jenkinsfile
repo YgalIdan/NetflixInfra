@@ -14,7 +14,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'AWS_cred', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh '''
                         terraform init
-                        terraform apply -var-file TF/region.us-east-1.tfvars
+                        terraform apply -var-file TF/region.us-east-1.tfvars -auto-approve
                     '''
                 }
             }
