@@ -15,8 +15,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'AWS_cred', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh '''
                         cd TF
-                        terraform init
-                        TF_CLI_ARGS="-no-color" terraform apply -var-file region.${Region}.tfvars -auto-approve
+                        terraform init -no-color
+                        terraform apply -no-color -var-file region.${Region}.tfvars -auto-approve
                     '''
                 }
             }
