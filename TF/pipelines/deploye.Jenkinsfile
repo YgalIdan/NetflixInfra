@@ -2,8 +2,8 @@ pipeline {
     agent any
     
     parameters { 
-        choise(name: "ENV", choises: ['Dev', 'Prod'], description: '')
-        choise(name: "Region", choises: ['eu-north-1', 'us-east-1'], description: '')
+        choice(name: "ENV", choices: ['Dev', 'Prod'], description: '')
+        choice(name: "Region", choices: ['eu-north-1', 'us-east-1'], description: '')
     }
 
     stages {
