@@ -16,7 +16,7 @@ pipeline {
                     sh '''
                         cd TF
                         terraform init
-                        terraform apply -var-file region.${Region}.tfvars -auto-approve
+                        TF_CLI_ARGS="-no-color" terraform apply -var-file region.${Region}.tfvars -auto-approve
                     '''
                 }
             }
