@@ -14,7 +14,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'GitHub', usernameVariable: 'USERNAME', passwordVariable: 'GIT_TOKEN')]) {
                     sh '''
                         terraform init
-                        terraform apply -var-file region.us-east-1.tfvars
+                        terraform apply -var-file TF/region.us-east-1.tfvars
                     '''
                 }
             }
