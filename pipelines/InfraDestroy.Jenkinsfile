@@ -15,7 +15,7 @@ pipeline {
                     sh '''
                         cd TF
                         terraform init
-                        terraform destroy -var-file region.${Region}.tfvars -auto-approve
+                        TF_CLI_ARGS="-no-color" terraform destroy -var-file region.${Region}.tfvars -auto-approve
                     '''
                 }
             }
