@@ -77,7 +77,7 @@ resource "aws_instance" "netflix_app" {
   key_name = var.key_pair
   availability_zone = "${var.region}a"
   user_data = file("./deploy.sh")
-  vpc_security_group_ids = [module.netflix_app_vpc.id]
+  vpc_security_group_ids = [aws_security_group.netflix_app_sg.id]
 
   tags = {
     Name = var.env
