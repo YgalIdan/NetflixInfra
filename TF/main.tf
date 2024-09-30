@@ -70,11 +70,10 @@ resource "aws_volume_attachment" "ebs_att" {
 }
 
 resource "aws_instance" "netflix_app" {
-  ami           = var.ami_id
+  ami           = data.aws_ami.ubuntu_ami.id
   depends_on  = [aws_s3_bucket.s3netflix]
   instance_type = var.type
   key_name = var.key_pair
-  availability_zone = "${var.region}a"
   user_data = file("./deploy.sh")
   subnet_id   = module.netflix_app_vpc.public_subnets[0]
   vpc_security_group_ids = [aws_security_group.netflix_app_sg.id]
@@ -85,7 +84,7 @@ resource "aws_instance" "netflix_app" {
 }
 
 resource "aws_ebs_volume" "AddNetflixVolume" {
-  availability_zone = "${var.region}a"
+  availability_zone = aws_instance.netflix_app.availability_zone
   size              = 5
 
   tags = {
