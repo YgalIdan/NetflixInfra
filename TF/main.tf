@@ -91,6 +91,7 @@ resource "aws_ebs_volume" "AddNetflixVolume" {
   tags = {
     Name = "netflix"
   }
+}
 
 module "netflix_app_vpc" {
   source  = "terraform-aws-modules/vpc/aws"
@@ -108,5 +109,4 @@ module "netflix_app_vpc" {
   tags = {
     Env         = var.env
   }
-}
 }
