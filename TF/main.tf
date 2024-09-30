@@ -23,7 +23,7 @@ provider "aws" {
 resource "aws_security_group" "netflix_app_sg" {
   name        = "TF-netflix-app-sg"   # change <your-name> accordingly
   description = "Allow SSH and HTTP traffic"
-  vpc_id      = module.netflix_app_vpc.vpc_id
+  vpc_security_group_id = module.netflix_app_vpc.vpc_id
 
   ingress {
     from_port   = 22
