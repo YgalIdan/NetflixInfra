@@ -23,7 +23,7 @@ provider "aws" {
 resource "aws_security_group" "netflix_app_sg" {
   name        = "TF-netflix-app-sg"   # change <your-name> accordingly
   description = "Allow SSH and HTTP traffic"
-  vpc_security_group_id = module.netflix_app_vpc.vpc_id
+  vpc_id      = module.netflix_app_vpc.vpc_id
 
   ingress {
     from_port   = 22
@@ -77,7 +77,7 @@ resource "aws_instance" "netflix_app" {
   key_name = var.key_pair
   availability_zone = "${var.region}a"
   user_data = file("./deploy.sh")
-  subnet_id = module.netflix_app_vpc.public_subnets[0]
+  vpc_security_group_ids = [module.netflix_app_vpc.id]
 
   tags = {
     Name = var.env
