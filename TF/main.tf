@@ -76,8 +76,9 @@ resource "aws_instance" "netflix_app" {
   key_name = var.key_pair
   availability_zone = "${var.region}a"
   user_data = file("./deploy.sh")
+  vpc_security_group_ids = [netflix_app_vpc.vpc_id]
   tags = {
-    Name = "tf_1"
+    Name = var.env
   }
 }
 
@@ -88,4 +89,22 @@ resource "aws_ebs_volume" "AddNetflixVolume" {
   tags = {
     Name = "netflix"
   }
+
+module "netflix_app_vpc" {
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "5.8.1"
+
+  name = "netflix-app"
+  cidr = "10.0.0.0/16"
+
+  azs             = ["${var.region}a", "${var.region}b"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
+  public_subnets  = ["10.0.3.0/24", "10.0.4.0/24"]
+
+  enable_nat_gateway = false
+
+  tags = {
+    Env         = var.env
+  }
+}
 }
