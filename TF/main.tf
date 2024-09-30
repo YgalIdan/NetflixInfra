@@ -73,6 +73,7 @@ resource "aws_instance" "netflix_app" {
   ami           = var.ami_id
   depends_on  = [aws_s3_bucket.s3netflix]
   instance_type = var.type
+  security_groups = [aws_security_group.netflix_app_sg.name]
   key_name = var.key_pair
   availability_zone = "${var.region}a"
   user_data = file("./deploy.sh")
