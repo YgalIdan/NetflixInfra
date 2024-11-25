@@ -12,10 +12,11 @@
   6. [Architecture](#Architecture)
 
 ## About the project
-This project focuses on the complete deployment and management of a Netflix-style service in a Kubernetes environment. It includes building Docker images, deploying microservices, establishing CI/CD pipelines using Jenkins and ArgoCD, and automating the entire process for seamless development and deployment.
-**The project includes the following microservices:**
-[NetflixFrontend](https://github.com/YgalIdan/NetflixFrontend): Handles the user interface.
-[NetflixBackend](https://github.com/YgalIdan/NetflixMovieCatalog): Manages movie data and catalog information.
+This project focuses on the complete deployment and management of a Netflix-style service in a Kubernetes environment. It includes building Docker images, 
+deploying microservices, establishing CI/CD pipelines using Jenkins and ArgoCD, and automating the entire process for seamless development and deployment.  
+**The project includes the following microservices:**  
+**[NetflixFrontend](https://github.com/YgalIdan/NetflixFrontend):** Handles the user interface.  
+**[NetflixBackend](https://github.com/YgalIdan/NetflixMovieCatalog):** Manages movie data and catalog information.
 
 ## Skills demonstrated
 - **Containerization and Docker Image Management:**  
